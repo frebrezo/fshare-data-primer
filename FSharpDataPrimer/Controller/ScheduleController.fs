@@ -5,6 +5,7 @@ open System.Net.Http
 open Microsoft.AspNetCore.Mvc
 open FSharp.Data
 // To open module, must be organizationally, above Controller folder.
+open FSharpDataPrimer.Utility.DateTimeUtil
 open FSharpDataPrimer.Model.Schedule
 open FSharpDataPrimer.Data.ScheduleRepository
 

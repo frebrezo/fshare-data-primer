@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Utility\DateTimeUtil.fs" />
     <Compile Include="Converter\Converter.fs" />
     <Compile Include="Model\Schedule.fs" />
     <Compile Include="Model\User.fs" />

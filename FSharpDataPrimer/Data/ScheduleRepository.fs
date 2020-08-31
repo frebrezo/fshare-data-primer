@@ -2,6 +2,7 @@
 
 open System
 open FSharp.Data
+open FSharpDataPrimer.Utility.DateTimeUtil
 open FSharpDataPrimer.Model.Schedule
 
 module ScheduleRepository =
@@ -68,7 +69,7 @@ values (
             Id = record.Id;
             UserId = record.UserId;
             Name = if record.Name.IsNone then null else record.Name.Value;
-            Appointment = record.Appointment;
+            Appointment = toDateTimeUtc record.Appointment;
             DurationInMins = record.DurationInMins
         } : Schedule
 
@@ -83,7 +84,7 @@ values (
             Id = record.Id;
             UserId = record.UserId;
             Name = if record.Name.IsNone then null else record.Name.Value;
-            Appointment = record.Appointment;
+            Appointment = toDateTimeUtc record.Appointment;
             DurationInMins = record.DurationInMins
         } : Schedule
 
@@ -98,7 +99,7 @@ values (
             Id = record.Id;
             UserId = record.UserId;
             Name = if record.Name.IsNone then null else record.Name.Value;
-            Appointment = record.Appointment;
+            Appointment = toDateTimeUtc record.Appointment;
             DurationInMins = record.DurationInMins
         } : Schedule
 
@@ -119,13 +120,13 @@ values (
         use cmd = new CommandByNameAndAppointmentAndDurationInMins(connectionString)
         cmd.Execute(
             name = name,
-            appointment = appointment,
+            appointment = toDateTimeUtc appointment,
             durationInMins = durationInMins)
 
     let getScheduleByAppointmentAndDurationInMins (appointment : DateTime, durationInMins : int) =
         use cmd = new CommandByAppointmentAndDurationInMins(connectionString)
         cmd.Execute(
-            appointment = appointment,
+            appointment = toDateTimeUtc appointment,
             durationInMins = durationInMins)
 
     let addSchedule (request : ScheduleInbound) =
@@ -133,5 +134,5 @@ values (
         cmd.Execute(
             userId = request.UserId,
             name = request.Name,
-            appointment = request.Appointment,
+            appointment = toDateTimeUtc request.Appointment,
             durationInMins = request.DurationInMins)
