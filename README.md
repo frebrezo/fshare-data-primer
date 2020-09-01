@@ -67,6 +67,7 @@ let addUser (request : UserInbound) =
 # SQL injection attacks (Little Bobby Tables)
 
 ![Little Bobby Tables](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
+
 https://xkcd.com/327/
 
 ```
