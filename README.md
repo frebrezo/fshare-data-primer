@@ -1,4 +1,6 @@
-# F# Data Access options
+# F# Data Primer
+
+## F# Data Access options
 
 * F# provides a broad range of database access support
   * FSharp.Data.SqlClient
@@ -9,7 +11,7 @@
     * Entity Framework support
   * ADO.NET
 
-# FSharp.Data.SqlClient library
+## FSharp.Data.SqlClient library
 
 * Manual SQL management
   * SQL-injection attacks are handled by the TypeProvider
@@ -20,7 +22,7 @@
   * Still requires mapping to Request/Response classes at application boundary
 * No database abstraction layer
 
-# FSharp.Data.SqlClient library limitations
+## FSharp.Data.SqlClient library limitations
 
 * Overhead for lots of small operations due to manual maintenance of SQL and F# generated Record types are specific to SQL query (see demo)
   * SELECT * operations
@@ -30,7 +32,7 @@
 * Requires LIVE connection to database for type inferencing to work
   * Build server requires access to a SQL Server instance
 
-# Query database
+## Query database
 
 * SELECT *
 [<Literal>]
@@ -52,7 +54,7 @@ let getUserByUserName (userName : string) =
     cmd.Execute(userName = userName)
 ```
 
-# Insert/Update database
+## Insert/Update database
 
 * INSERT INTO
 ```
@@ -64,7 +66,7 @@ let addUser (request : UserInbound) =
     cmd.Execute(userName = request.UserName)
 ```
 
-# SQL injection attacks (Little Bobby Tables)
+## SQL injection attacks (Little Bobby Tables)
 
 ![Little Bobby Tables](https://imgs.xkcd.com/comics/exploits_of_a_mom.png)
 
@@ -83,7 +85,7 @@ https://xkcd.com/327/
 
 ![SQL Injection Database](/images/sql-injection-database.png)
 
-# References
+## References
 
 * Quickstart: Use Visual Studio to create your first ASP.NET Core web service in F#
   * https://docs.microsoft.com/en-us/visualstudio/ide/quickstart-fsharp?view=vs-2019
